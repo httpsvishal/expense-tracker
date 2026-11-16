@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div>
+        <p class="eyebrow">PERSONAL FINANCE</p>
+        <h1>Expense Tracker</h1>
+        <p class="subtitle">Keep track of where your money goes.</p>
+      </div>
+      <div class="date" id="today"></div>
+    </header>
+
+    <section class="summary" aria-label="Expense summary">
+      <article class="summary-card total-card">
+        <span class="summary-label">Total spent</span>
+        <strong id="totalAmount">₹0.00</strong>
+        <span class="summary-note">Your recorded expenses</span>
+      </article>
+      <article class="summary-card">
+        <span class="summary-label">Transactions</span>
+        <strong id="expenseCount">0</strong>
+        <span class="summary-note">Expenses added</span>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <section class="panel form-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">NEW TRANSACTION</p>
+            <h2>Add an expense</h2>
+          </div>
+          <span class="plus-icon" aria-hidden="true">+</span>
+        </div>
+
+        <form id="expenseForm">
+          <label for="expenseName">Expense name</label>
+          <input id="expenseName" type="text" placeholder="e.g. Groceries" maxlength="50" required />
+
+          <label for="expenseAmount">Amount (₹)</label>
+          <input id="expenseAmount" type="number" placeholder="e.g. 450" min="0.01" step="0.01" required />
+
+          <label for="expenseCategory">Category</label>
+          <select id="expenseCategory" required>
+            <option value="" disabled selected>Select a category</option>
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Bills">Bills</option>
+            <option value="Education">Education</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <button class="primary-button" type="submit">Add expense <span>→</span></button>
+          <p class="form-message" id="formMessage" role="status"></p>
+        </form>
+      </section>
+
+      <section class="panel expenses-panel">
+        <div class="list-heading">
+          <div>
+            <p class="eyebrow">YOUR ACTIVITY</p>
+            <h2>Recent expenses</h2>
+          </div>
+          <select id="categoryFilter" class="filter-select" aria-label="Filter expenses by category">
+            <option value="All">All categories</option>
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Bills">Bills</option>
+            <option value="Education">Education</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div id="expenseList" class="expense-list">
+          <div class="empty-state" id="emptyState">
+            <div class="empty-icon">↗</div>
+            <h3>No expenses yet</h3>
+            <p>Add your first expense to get started.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+    <footer>Small steps today. Better money habits tomorrow.</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
